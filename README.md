@@ -23,6 +23,7 @@ pytho-leetcode-75/
 │   ├── queue/                    # Queue problems
 │   ├── linked_list/              # Linked List problems
 │   ├── binary_tree/              # Binary Tree - DFS problems
+│   ├── binary_tree_bfs/          # Binary Tree - BFS problems
 │   ├── binary_search_tree/       # Binary Search Tree problems
 │   ├── graph_dfs/                # Graph - DFS problems
 │   ├── graph_bfs/                # Graph - BFS problems
@@ -171,18 +172,19 @@ The LeetCode 75 problems are organized into the following categories:
 7. **Queue** - Queue data structure problems
 8. **Linked List** - Linked list manipulation
 9. **Binary Tree - DFS** - Tree traversal with DFS
-10. **Binary Search Tree** - BST specific problems
-11. **Graphs - DFS** - Graph traversal with DFS
-12. **Graphs - BFS** - Graph traversal with BFS
-13. **Heap / Priority Queue** - Heap-based problems
-14. **Binary Search** - Binary search algorithm
-15. **Backtracking** - Backtracking technique
-16. **DP - 1D** - One-dimensional dynamic programming
-17. **DP - Multidimensional** - Multi-dimensional DP
-18. **Bit Manipulation** - Bitwise operations
-19. **Trie** - Trie data structure
-20. **Intervals** - Interval-based problems
-21. **Monotonic Stack** - Monotonic stack technique
+10. **Binary Tree - BFS** - Tree traversal with BFS
+11. **Binary Search Tree** - BST specific problems
+12. **Graphs - DFS** - Graph traversal with DFS
+13. **Graphs - BFS** - Graph traversal with BFS
+14. **Heap / Priority Queue** - Heap-based problems
+15. **Binary Search** - Binary search algorithm
+16. **Backtracking** - Backtracking technique
+17. **DP - 1D** - One-dimensional dynamic programming
+18. **DP - Multidimensional** - Multi-dimensional DP
+19. **Bit Manipulation** - Bitwise operations
+20. **Trie** - Trie data structure
+21. **Intervals** - Interval-based problems
+22. **Monotonic Stack** - Monotonic stack technique
 
 ## 🎯 Example Solution
 

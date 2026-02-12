@@ -1,0 +1,14 @@
+"""
+LeetCode 1448: Count Good Nodes in Binary Tree
+"""
+
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def goodNodes(self, root) -> int:
+        pass
