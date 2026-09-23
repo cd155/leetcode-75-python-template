@@ -184,7 +184,6 @@ def ensure_labels_exist(token, repo, labels):
         "trie": "f9d0c4",
         "intervals": "bfd4f2",
         "monotonic stack": "c2e0c6",
-        "leetcode-75": "fbca04",
     }
 
     for label, color in label_colors.items():
@@ -242,7 +241,7 @@ def main():
         sys.exit(1)
 
     # Collect all unique labels
-    all_labels = {"leetcode-75"}
+    all_labels = set()
     for p in problems:
         all_labels.add(p["category"].replace("_", " "))
 
@@ -256,7 +255,7 @@ def main():
         category_label = problem["category"].replace("_", " ")
         title = f"LeetCode {problem['number']}: {problem['title']}"
         body = build_issue_body(problem)
-        labels = ["leetcode-75", category_label]
+        labels = [category_label]
 
         print(f"[{i}/75] Creating issue: {title}")
         issue_num, issue_url = create_github_issue(token, repo, title, body, labels)
