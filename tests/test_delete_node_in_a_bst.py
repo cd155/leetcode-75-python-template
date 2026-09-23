@@ -10,51 +10,34 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from binary_search_tree.delete_node_in_a_bst import Solution
-from binary_search_tree.delete_node_in_a_bst import TreeNode
-
-from collections import deque
-
-def list_to_tree(values):
-    if not values:
-        return None
-    root = TreeNode(values[0])
-    queue = deque([root])
-    i = 1
-    while queue and i < len(values):
-        node = queue.popleft()
-        if i < len(values) and values[i] is not None:
-            node.left = TreeNode(values[i])
-            queue.append(node.left)
-        i += 1
-        if i < len(values) and values[i] is not None:
-            node.right = TreeNode(values[i])
-            queue.append(node.right)
-        i += 1
-    return root
-
-def find_node(root, val):
-    if not root:
-        return None
-    if root.val == val:
-        return root
-    return find_node(root.left, val) or find_node(root.right, val)
-
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("delete_node_in_a_bst", src_path / "binary_search_tree" / "delete_node_in_a_bst.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
+TreeNode = module.TreeNode
 
 
 class TestDeleteNodeInABst:
-    """Test cases for LeetCode 450: Delete Node in a BST"""
+    """Test cases for Delete Node in a BST problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        root = list_to_tree([5,3,6,2,4,None,7])
+        """Test case from example 1"""
+        root = TreeNode(5, TreeNode(3, TreeNode(2), TreeNode(4)), TreeNode(6, None, TreeNode(7)))
         result = self.solution.deleteNode(root, 3)
-        assert result is not None
+        assert result.val == 5
+        assert result.left.val in (2, 4)
+        assert result.right.val == 6
 
     def test_example_2(self):
-        root = list_to_tree([5,3,6,2,4,None,7])
+        """Test case from example 2"""
+        root = TreeNode(5, TreeNode(3, TreeNode(2), TreeNode(4)), TreeNode(6, None, TreeNode(7)))
         result = self.solution.deleteNode(root, 0)
-        assert result is not None
-
+        assert result.val == 5
+        assert result.left.val == 3
+        assert result.right.val == 6

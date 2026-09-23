@@ -10,44 +10,33 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from binary_tree_bfs.binary_tree_right_side_view import Solution
-from binary_tree_bfs.binary_tree_right_side_view import TreeNode
-
-from collections import deque
-
-def list_to_tree(values):
-    if not values:
-        return None
-    root = TreeNode(values[0])
-    queue = deque([root])
-    i = 1
-    while queue and i < len(values):
-        node = queue.popleft()
-        if i < len(values) and values[i] is not None:
-            node.left = TreeNode(values[i])
-            queue.append(node.left)
-        i += 1
-        if i < len(values) and values[i] is not None:
-            node.right = TreeNode(values[i])
-            queue.append(node.right)
-        i += 1
-    return root
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("binary_tree_right_side_view", src_path / "binary_tree_bfs" / "binary_tree_right_side_view.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
+TreeNode = module.TreeNode
 
 
 class TestBinaryTreeRightSideView:
-    """Test cases for LeetCode 199: Binary Tree Right Side View"""
+    """Test cases for Binary Tree Right Side View problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        root = list_to_tree([1,2,3,None,5,None,4])
-        assert self.solution.rightSideView(root) == [1,3,4]
+        """Test case from example 1"""
+        root = TreeNode(1, TreeNode(2, None, TreeNode(5)), TreeNode(3, None, TreeNode(4)))
+        assert self.solution.rightSideView(root) == [1, 3, 4]
 
     def test_example_2(self):
-        root = list_to_tree([1,None,3])
-        assert self.solution.rightSideView(root) == [1,3]
+        """Test case from example 2"""
+        root = TreeNode(1, None, TreeNode(3))
+        assert self.solution.rightSideView(root) == [1, 3]
 
     def test_example_3(self):
-        root = list_to_tree([])
+        """Test case from example 3"""
+        root = None
         assert self.solution.rightSideView(root) == []

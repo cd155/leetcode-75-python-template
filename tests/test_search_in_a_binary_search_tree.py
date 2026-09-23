@@ -10,51 +10,31 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from binary_search_tree.search_in_a_binary_search_tree import Solution
-from binary_search_tree.search_in_a_binary_search_tree import TreeNode
-
-from collections import deque
-
-def list_to_tree(values):
-    if not values:
-        return None
-    root = TreeNode(values[0])
-    queue = deque([root])
-    i = 1
-    while queue and i < len(values):
-        node = queue.popleft()
-        if i < len(values) and values[i] is not None:
-            node.left = TreeNode(values[i])
-            queue.append(node.left)
-        i += 1
-        if i < len(values) and values[i] is not None:
-            node.right = TreeNode(values[i])
-            queue.append(node.right)
-        i += 1
-    return root
-
-def find_node(root, val):
-    if not root:
-        return None
-    if root.val == val:
-        return root
-    return find_node(root.left, val) or find_node(root.right, val)
-
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("search_in_a_binary_search_tree", src_path / "binary_search_tree" / "search_in_a_binary_search_tree.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
+TreeNode = module.TreeNode
 
 
 class TestSearchInABinarySearchTree:
-    """Test cases for LeetCode 700: Search in a Binary Search Tree"""
+    """Test cases for Search in a Binary Search Tree problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        root = list_to_tree([4,2,7,1,3])
+        """Test case from example 1"""
+        root = TreeNode(4, TreeNode(2, TreeNode(1), TreeNode(3)), TreeNode(7))
         result = self.solution.searchBST(root, 2)
         assert result.val == 2
+        assert result.left.val == 1
+        assert result.right.val == 3
 
     def test_example_2(self):
-        root = list_to_tree([4,2,7,1,3])
-        result = self.solution.searchBST(root, 5)
-        assert result is None
-
+        """Test case from example 2"""
+        root = TreeNode(4, TreeNode(2, TreeNode(1), TreeNode(3)), TreeNode(7))
+        assert self.solution.searchBST(root, 5) is None

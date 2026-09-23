@@ -10,21 +10,29 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from array_string.increasing_triplet_subsequence import Solution
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("increasing_triplet_subsequence", src_path / "array_string" / "increasing_triplet_subsequence.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
 
 
 class TestIncreasingTripletSubsequence:
-    """Test cases for LeetCode 334: Increasing Triplet Subsequence"""
+    """Test cases for Increasing Triplet Subsequence problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        assert self.solution.increasingTriplet([1,2,3,4,5]) == True
+        """Test case from example 1"""
+        assert self.solution.increasingTriplet([1, 2, 3, 4, 5]) == True
 
     def test_example_2(self):
-        assert self.solution.increasingTriplet([5,4,3,2,1]) == False
+        """Test case from example 2"""
+        assert self.solution.increasingTriplet([5, 4, 3, 2, 1]) == False
 
     def test_example_3(self):
-        assert self.solution.increasingTriplet([2,1,5,0,4,6]) == True
-
+        """Test case from example 3"""
+        assert self.solution.increasingTriplet([2, 1, 5, 0, 4, 6]) == True

@@ -10,22 +10,24 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from monotonic_stack.online_stock_span import Solution
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("online_stock_span", src_path / "monotonic_stack" / "online_stock_span.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+StockSpanner = module.StockSpanner
 
 
 class TestOnlineStockSpan:
-    """Test cases for LeetCode 901: Online Stock Span"""
-
-    def setup_method(self):
-        self.solution = Solution()
+    """Test cases for Online Stock Span problem"""
 
     def test_example_1(self):
-        obj = Solution()
-        assert obj.next(100) == 1
-        assert obj.next(80) == 1
-        assert obj.next(60) == 1
-        assert obj.next(70) == 2
-        assert obj.next(60) == 1
-        assert obj.next(75) == 4
-        assert obj.next(85) == 6
-
+        """Test case from example 1"""
+        stockSpanner = StockSpanner()
+        assert stockSpanner.next(100) == 1
+        assert stockSpanner.next(80) == 1
+        assert stockSpanner.next(60) == 1
+        assert stockSpanner.next(70) == 2
+        assert stockSpanner.next(60) == 1
+        assert stockSpanner.next(75) == 4
+        assert stockSpanner.next(85) == 6
