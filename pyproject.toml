@@ -1,14 +1,19 @@
 [build-system]
-requires = ["setuptools>=61.0"]
+requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pytho-leetcode-75"
+name = "leetcode-75-python"
 version = "0.1.0"
 description = "LeetCode 75 practice solutions in Python"
 readme = "README.md"
 requires-python = ">=3.8"
-dependencies = []
+authors = [
+    {name = "cd155"}
+]
+dependencies = [
+    "pytest>=7.4.0",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -20,4 +25,3 @@ testpaths = ["tests"]
 python_files = ["test_*.py"]
 python_classes = ["Test*"]
 python_functions = ["test_*"]
-addopts = "-v"

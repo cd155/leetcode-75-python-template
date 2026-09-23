@@ -1,33 +1,30 @@
 """
-LeetCode XXXX: [Problem Title]
+LeetCode {NUMBER}: {TITLE}
 
-[Problem Description]
+{DESCRIPTION}
 
 Example 1:
-Input: 
-Output: 
+{EXAMPLE_1}
 
 Example 2:
-Input: 
-Output: 
+{EXAMPLE_2}
 
 Constraints:
-- 
-
+{CONSTRAINTS}
 """
 
 
 class Solution:
-    def problemMethod(self, param):
+    def {method_name}(self, {params}):
         """
-        [Brief description of the solution approach]
-        
+        {METHOD_DESCRIPTION}
+
         Args:
-            param: [Description]
-            
+            {ARGS}
+
         Returns:
-            [Description]
-            
+            {RETURNS}
+
         Time Complexity: O(?)
         Space Complexity: O(?)
         """
@@ -38,11 +35,11 @@ class Solution:
 # Example usage (for testing locally)
 if __name__ == "__main__":
     solution = Solution()
-    
+
     # Test case 1
-    result = solution.problemMethod(input_value)
+    result = solution.{method_name}({TEST_CASE_1})
     print(f"Test 1: {result}")
-    
+
     # Test case 2
-    result = solution.problemMethod(input_value)
+    result = solution.{method_name}({TEST_CASE_2})
     print(f"Test 2: {result}")

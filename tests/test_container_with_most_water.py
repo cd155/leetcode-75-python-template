@@ -10,18 +10,25 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from two_pointers.container_with_most_water import Solution
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("container_with_most_water", src_path / "two_pointers" / "container_with_most_water.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
 
 
 class TestContainerWithMostWater:
-    """Test cases for LeetCode 11: Container With Most Water"""
+    """Test cases for container with most water problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        assert self.solution.maxArea([1,8,6,2,5,4,8,3,7]) == 49
+        """Test case from example 1"""
+        assert self.solution.maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]) == 49
 
     def test_example_2(self):
-        assert self.solution.maxArea([1,1]) == 1
-
+        """Test case from example 2"""
+        assert self.solution.maxArea([1, 1]) == 1

@@ -10,18 +10,25 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from binary_search.successful_pairs_of_spells_and_potions import Solution
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("successful_pairs_of_spells_and_potions", src_path / "binary_search" / "successful_pairs_of_spells_and_potions.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
 
 
 class TestSuccessfulPairsOfSpellsAndPotions:
-    """Test cases for LeetCode 2300: Successful Pairs of Spells and Potions"""
+    """Test cases for Successful Pairs of Spells and Potions problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        assert self.solution.successfulPairs([5,1,3], [1,2,3,4,5], 7) == [4,0,3]
+        """Test case from example 1"""
+        assert self.solution.successfulPairs([5, 1, 3], [1, 2, 3, 4, 5], 7) == [4, 0, 3]
 
     def test_example_2(self):
-        assert self.solution.successfulPairs([3,1,2], [8,5,8], 16) == [2,0,2]
-
+        """Test case from example 2"""
+        assert self.solution.successfulPairs([3, 1, 2], [8, 5, 8], 16) == [2, 0, 2]

@@ -1,1 +1,1 @@
-"""Array and String problems"""
+"""Array / String problems"""

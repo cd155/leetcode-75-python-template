@@ -1,46 +1,39 @@
-# LeetCode 75 Practice in Python
+# LeetCode 75 Python Solutions
 
-A structured project for practicing and mastering the LeetCode 75 essential coding interview questions in Python.
+A collection of solutions to the "LeetCode 75" study plan problems in Python.
 
-## 📋 Project Overview
+## 📚 Overview
 
-This repository contains solutions to the LeetCode 75 curated list of essential interview questions, organized by problem type. Each solution includes:
-- Clean, well-documented Python code
-- Comprehensive test cases
-- Time and space complexity analysis (where applicable)
+This repository contains Python solutions to the LeetCode 75 study plan - LeetCode's curated list of 75 problems that cover the most important patterns and concepts for technical interviews.
 
-## 🗂️ Project Structure
+## 🗂️ Structure
+
+Solutions are organized by the [LeetCode 75 Study Plan](https://leetcode.com/studyplan/leetcode-75/) categories:
 
 ```
-pytho-leetcode-75/
-├── src/                          # Solution modules
-│   ├── array_string/             # Array and String problems
-│   ├── two_pointers/             # Two Pointers technique
-│   ├── sliding_window/           # Sliding Window problems
-│   ├── prefix_sum/               # Prefix Sum problems
-│   ├── hash_map/                 # Hash Map/Set problems
-│   ├── stack/                    # Stack problems
-│   ├── queue/                    # Queue problems
-│   ├── linked_list/              # Linked List problems
-│   ├── binary_tree/              # Binary Tree - DFS problems
-│   ├── binary_tree_bfs/          # Binary Tree - BFS problems
-│   ├── binary_search_tree/       # Binary Search Tree problems
-│   ├── graph_dfs/                # Graph - DFS problems
-│   ├── graph_bfs/                # Graph - BFS problems
-│   ├── heap/                     # Heap/Priority Queue problems
-│   ├── binary_search/            # Binary Search problems
-│   ├── backtracking/             # Backtracking problems
-│   ├── dp_1d/                    # Dynamic Programming - 1D
-│   ├── dp_multidimensional/      # Dynamic Programming - Multidimensional
-│   ├── bit_manipulation/         # Bit Manipulation problems
-│   ├── trie/                     # Trie problems
-│   ├── intervals/                # Intervals problems
-│   └── monotonic_stack/          # Monotonic Stack problems
-├── tests/                        # Test files
-├── requirements.txt              # Python dependencies
-├── pyproject.toml                # Project configuration
-├── pytest.ini                    # Pytest configuration
-└── README.md                     # This file
+src/
+├── array_string/        # Array / String (9)
+├── two_pointers/        # Two Pointers (4)
+├── sliding_window/      # Sliding Window (4)
+├── prefix_sum/          # Prefix Sum (2)
+├── hash_map_set/        # Hash Map / Set (4)
+├── stack/               # Stack (3)
+├── queue/               # Queue (2)
+├── linked_list/         # Linked List (4)
+├── binary_tree_dfs/     # Binary Tree - DFS (6)
+├── binary_tree_bfs/     # Binary Tree - BFS (2)
+├── binary_search_tree/  # Binary Search Tree (2)
+├── graphs_dfs/          # Graphs - DFS (4)
+├── graphs_bfs/          # Graphs - BFS (2)
+├── heap_priority_queue/ # Heap / Priority Queue (4)
+├── binary_search/       # Binary Search (4)
+├── backtracking/        # Backtracking (2)
+├── dp_1d/               # DP - 1D (4)
+├── dp_multidimensional/ # DP - Multidimensional (4)
+├── bit_manipulation/    # Bit Manipulation (3)
+├── trie/                # Trie (2)
+├── intervals/           # Intervals (2)
+└── monotonic_stack/     # Monotonic Stack (2)
 ```
 
 ## 🚀 Getting Started
@@ -48,172 +41,174 @@ pytho-leetcode-75/
 ### Prerequisites
 
 - Python 3.8 or higher
-- pip (Python package installer)
+- pip
 
 ### Installation
 
-1. Clone the repository:
 ```bash
-git clone https://github.com/cd155/pytho-leetcode-75.git
-cd pytho-leetcode-75
-```
+# Clone the repository
+git clone https://github.com/cd155/leetcode-75-python-template.git
+cd leetcode-75-python-template
 
-2. Install dependencies:
-```bash
+# Create python virtual environment
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-Or install with development dependencies:
-```bash
-pip install -e ".[dev]"
-```
+### Running Tests
 
-## 🧪 Running Tests
-
-### Run all tests:
 ```bash
+# Run all tests
 pytest
-```
 
-### Run tests for a specific problem:
-```bash
+# Run tests for a specific problem
 pytest tests/test_merge_strings_alternately.py
-```
 
-### Run tests with verbose output:
-```bash
+# Run with verbose output
 pytest -v
 ```
 
-### Run tests with coverage:
+### Running Individual Solutions
+
+Each solution file can be run independently:
+
 ```bash
-pytest --cov=src tests/
+python src/array_string/merge_strings_alternately.py
 ```
 
-## 📝 Adding New Solutions
+## 📝 Problem Categories
 
-### 1. Create a solution file:
-Create a new Python file in the appropriate category directory under `src/`. For example:
+### Array / String (9 problems)
+- Merge Strings Alternately
+- Greatest Common Divisor of Strings
+- Kids With the Greatest Number of Candies
+- Can Place Flowers
+- Reverse Vowels of a String
+- Reverse Words in a String
+- Product of Array Except Self
+- Increasing Triplet Subsequence
+- String Compression
 
-```python
-# src/array_string/your_problem.py
-"""
-LeetCode XXXX: Problem Title
+### Two Pointers (4 problems)
+- Move Zeroes
+- Is Subsequence
+- Container With Most Water
+- Max Number of K-Sum Pairs
 
-Problem description here...
-"""
+### Sliding Window (4 problems)
+- Maximum Average Subarray I
+- Maximum Number of Vowels in a Substring of Given Length
+- Max Consecutive Ones III
+- Longest Subarray of 1's After Deleting One Element
 
-class Solution:
-    def yourMethod(self, input_param):
-        """
-        Solution description.
-        
-        Args:
-            input_param: Description
-            
-        Returns:
-            Description of return value
-        """
-        # Your implementation here
-        pass
-```
+### Prefix Sum (2 problems)
+- Find the Highest Altitude
+- Find Pivot Index
 
-### 2. Create corresponding test file:
-Create a test file in the `tests/` directory:
+### Hash Map / Set (4 problems)
+- Find the Difference of Two Arrays
+- Unique Number of Occurrences
+- Determine if Two Strings Are Close
+- Equal Row and Column Pairs
 
-```python
-# tests/test_your_problem.py
-"""
-Tests for LeetCode XXXX: Problem Title
-"""
+### Stack (3 problems)
+- Removing Stars From a String
+- Asteroid Collision
+- Decode String
 
-import pytest
-import sys
-from pathlib import Path
+### Queue (2 problems)
+- Number of Recent Calls
+- Dota2 Senate
 
-# Add src directory to path
-src_path = Path(__file__).parent.parent / "src"
-sys.path.insert(0, str(src_path))
+### Linked List (4 problems)
+- Delete the Middle Node of a Linked List
+- Odd Even Linked List
+- Reverse Linked List
+- Maximum Twin Sum of a Linked List
 
-from category.your_problem import Solution
+### Binary Tree - DFS (6 problems)
+- Maximum Depth of Binary Tree
+- Leaf-Similar Trees
+- Count Good Nodes in Binary Tree
+- Path Sum III
+- Longest ZigZag Path in a Binary Tree
+- Lowest Common Ancestor of a Binary Tree
 
+### Binary Tree - BFS (2 problems)
+- Binary Tree Right Side View
+- Maximum Level Sum of a Binary Tree
 
-class TestYourProblem:
-    """Test cases for your problem"""
-    
-    def setup_method(self):
-        """Setup test fixtures"""
-        self.solution = Solution()
-    
-    def test_case_1(self):
-        """Test description"""
-        assert self.solution.yourMethod(input) == expected_output
-    
-    def test_case_2(self):
-        """Test description"""
-        assert self.solution.yourMethod(input) == expected_output
-```
+### Binary Search Tree (2 problems)
+- Search in a Binary Search Tree
+- Delete Node in a BST
 
-### 3. Run your tests:
-```bash
-pytest tests/test_your_problem.py -v
-```
+### Graphs - DFS (4 problems)
+- Keys and Rooms
+- Number of Provinces
+- Reorder Routes to Make All Paths Lead to the City Zero
+- Evaluate Division
 
-## 📊 Problem Categories
+### Graphs - BFS (2 problems)
+- Nearest Exit from Entrance in Maze
+- Rotting Oranges
 
-The LeetCode 75 problems are organized into the following categories:
+### Heap / Priority Queue (4 problems)
+- Kth Largest Element in an Array
+- Smallest Number in Infinite Set
+- Maximum Subsequence Score
+- Total Cost to Hire K Workers
 
-1. **Array / String** - Basic array and string manipulation
-2. **Two Pointers** - Problems using two pointer technique
-3. **Sliding Window** - Window-based array/string problems
-4. **Prefix Sum** - Cumulative sum techniques
-5. **Hash Map / Set** - Hash table based problems
-6. **Stack** - Stack data structure problems
-7. **Queue** - Queue data structure problems
-8. **Linked List** - Linked list manipulation
-9. **Binary Tree - DFS** - Tree traversal with DFS
-10. **Binary Tree - BFS** - Tree traversal with BFS
-11. **Binary Search Tree** - BST specific problems
-12. **Graphs - DFS** - Graph traversal with DFS
-13. **Graphs - BFS** - Graph traversal with BFS
-14. **Heap / Priority Queue** - Heap-based problems
-15. **Binary Search** - Binary search algorithm
-16. **Backtracking** - Backtracking technique
-17. **DP - 1D** - One-dimensional dynamic programming
-18. **DP - Multidimensional** - Multi-dimensional DP
-19. **Bit Manipulation** - Bitwise operations
-20. **Trie** - Trie data structure
-21. **Intervals** - Interval-based problems
-22. **Monotonic Stack** - Monotonic stack technique
+### Binary Search (4 problems)
+- Guess Number Higher or Lower
+- Successful Pairs of Spells and Potions
+- Find Peak Element
+- Koko Eating Bananas
 
-## 🎯 Example Solution
+### Backtracking (2 problems)
+- Letter Combinations of a Phone Number
+- Combination Sum III
 
-See `src/array_string/merge_strings_alternately.py` for an example solution with:
-- Detailed problem description
-- Clean implementation
-- Type hints
-- Comprehensive docstrings
+### DP - 1D (4 problems)
+- N-th Tribonacci Number
+- Min Cost Climbing Stairs
+- House Robber
+- Domino and Tromino Tiling
 
-And `tests/test_merge_strings_alternately.py` for example test cases.
+### DP - Multidimensional (4 problems)
+- Unique Paths
+- Longest Common Subsequence
+- Best Time to Buy and Sell Stock with Transaction Fee
+- Edit Distance
 
-## 🤝 Contributing
+### Bit Manipulation (3 problems)
+- Counting Bits
+- Single Number
+- Minimum Flips to Make a OR b Equal to c
 
-Feel free to add more solutions or improve existing ones! Make sure to:
-1. Follow the existing code structure
-2. Add comprehensive test cases
-3. Include docstrings and comments
-4. Run tests before committing
+### Trie (2 problems)
+- Implement Trie (Prefix Tree)
+- Search Suggestions System
 
-## 📚 Resources
+### Intervals (2 problems)
+- Non-overlapping Intervals
+- Minimum Number of Arrows to Burst Balloons
 
-- [LeetCode 75 Study Plan](https://leetcode.com/studyplan/leetcode-75/)
-- [Python Documentation](https://docs.python.org/3/)
-- [Pytest Documentation](https://docs.pytest.org/)
+### Monotonic Stack (2 problems)
+- Daily Temperatures
+- Online Stock Span
+
+## 🔗 Resources
+
+- [LeetCode 75 Study Plan](https://leetcode.com/studyplan/leetcode-75/) - Official problem list and categories
+- [LeetCode](https://leetcode.com/)
 
 ## 📄 License
 
 This project is for educational purposes. All LeetCode problems are property of LeetCode.
 
----
+## 🤝 Contributing
 
-Happy Coding! 🚀
+Contributions, issues, and feature requests are welcome!

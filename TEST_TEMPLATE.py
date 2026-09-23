@@ -1,5 +1,5 @@
 """
-Tests for LeetCode XXXX: [Problem Title]
+Tests for LeetCode {NUMBER}: {TITLE}
 """
 
 import pytest
@@ -10,49 +10,20 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from [category].[problem_file] import Solution
+from {category}.{filename} import Solution
 
 
-class Test[ProblemName]:
-    """Test cases for [problem name]"""
-    
+class Test{ClassName}:
+    """Test cases for {problem_name} problem"""
+
     def setup_method(self):
         """Setup test fixtures"""
         self.solution = Solution()
-    
+
     def test_example_1(self):
         """Test case from example 1"""
-        # TODO: Implement test
-        assert self.solution.problemMethod(input) == expected_output
-    
+        assert self.solution.{method_name}({TEST_INPUT_1}) == {EXPECTED_OUTPUT_1}
+
     def test_example_2(self):
         """Test case from example 2"""
-        # TODO: Implement test
-        assert self.solution.problemMethod(input) == expected_output
-    
-    def test_edge_case_1(self):
-        """Test edge case: [description]"""
-        # TODO: Implement test
-        assert self.solution.problemMethod(input) == expected_output
-    
-    def test_edge_case_2(self):
-        """Test edge case: [description]"""
-        # TODO: Implement test
-        assert self.solution.problemMethod(input) == expected_output
-    
-    def test_large_input(self):
-        """Test with large input"""
-        # TODO: Implement test
-        pass
-
-
-# Optional: Parametrized tests for multiple test cases
-@pytest.mark.parametrize("input_data,expected", [
-    (input1, output1),
-    (input2, output2),
-    (input3, output3),
-])
-def test_parametrized(input_data, expected):
-    """Parametrized tests for multiple cases"""
-    solution = Solution()
-    assert solution.problemMethod(input_data) == expected
+        assert self.solution.{method_name}({TEST_INPUT_2}) == {EXPECTED_OUTPUT_2}

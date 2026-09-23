@@ -10,18 +10,25 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from prefix_sum.find_the_highest_altitude import Solution
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("find_the_highest_altitude", src_path / "prefix_sum" / "find_the_highest_altitude.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
 
 
 class TestFindTheHighestAltitude:
-    """Test cases for LeetCode 1732: Find the Highest Altitude"""
+    """Test cases for Find the Highest Altitude problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        assert self.solution.largestAltitude([-5,1,5,0,-7]) == 1
+        """Test case from example 1"""
+        assert self.solution.largestAltitude([-5, 1, 5, 0, -7]) == 1
 
     def test_example_2(self):
-        assert self.solution.largestAltitude([-4,-3,-2,-1,4,3,2]) == 0
-
+        """Test case from example 2"""
+        assert self.solution.largestAltitude([-4, -3, -2, -1, 4, 3, 2]) == 0

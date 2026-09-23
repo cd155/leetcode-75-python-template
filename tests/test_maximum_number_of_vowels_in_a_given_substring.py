@@ -1,5 +1,5 @@
 """
-Tests for LeetCode 1456: Maximum Number of Vowels in a Given Substring
+Tests for LeetCode 1456: Maximum Number of Vowels in a Substring of Given Length
 """
 
 import pytest
@@ -10,21 +10,29 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from sliding_window.maximum_number_of_vowels_in_a_given_substring import Solution
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("maximum_number_of_vowels_in_a_given_substring", src_path / "sliding_window" / "maximum_number_of_vowels_in_a_given_substring.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
 
 
 class TestMaximumNumberOfVowelsInAGivenSubstring:
-    """Test cases for LeetCode 1456: Maximum Number of Vowels in a Given Substring"""
+    """Test cases for Maximum Number of Vowels in a Substring of Given Length problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
+        """Test case from example 1"""
         assert self.solution.maxVowels("abciiidef", 3) == 3
 
     def test_example_2(self):
+        """Test case from example 2"""
         assert self.solution.maxVowels("aeiou", 2) == 2
 
     def test_example_3(self):
+        """Test case from example 3"""
         assert self.solution.maxVowels("leetcode", 3) == 2
-

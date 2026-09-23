@@ -10,40 +10,28 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from binary_tree_bfs.maximum_level_sum_of_a_binary_tree import Solution
-from binary_tree_bfs.maximum_level_sum_of_a_binary_tree import TreeNode
-
-from collections import deque
-
-def list_to_tree(values):
-    if not values:
-        return None
-    root = TreeNode(values[0])
-    queue = deque([root])
-    i = 1
-    while queue and i < len(values):
-        node = queue.popleft()
-        if i < len(values) and values[i] is not None:
-            node.left = TreeNode(values[i])
-            queue.append(node.left)
-        i += 1
-        if i < len(values) and values[i] is not None:
-            node.right = TreeNode(values[i])
-            queue.append(node.right)
-        i += 1
-    return root
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("maximum_level_sum_of_a_binary_tree", src_path / "binary_tree_bfs" / "maximum_level_sum_of_a_binary_tree.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
+TreeNode = module.TreeNode
 
 
 class TestMaximumLevelSumOfABinaryTree:
-    """Test cases for LeetCode 1161: Maximum Level Sum of a Binary Tree"""
+    """Test cases for Maximum Level Sum of a Binary Tree problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        root = list_to_tree([1,7,0,7,-8,None,None])
+        """Test case from example 1"""
+        root = TreeNode(1, TreeNode(7, TreeNode(7), TreeNode(-8)), TreeNode(0))
         assert self.solution.maxLevelSum(root) == 2
 
     def test_example_2(self):
-        root = list_to_tree([989,None,10250,98693,-89388,None,None,None,-32127])
+        """Test case from example 2"""
+        root = TreeNode(989, None, TreeNode(10250, TreeNode(98693), TreeNode(-89388, None, TreeNode(-32127))))
         assert self.solution.maxLevelSum(root) == 2

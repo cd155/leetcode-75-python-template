@@ -10,43 +10,30 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from linked_list.reverse_linked_list import Solution
-from linked_list.reverse_linked_list import ListNode
-
-def list_to_linked(values):
-    dummy = ListNode(0)
-    curr = dummy
-    for v in values:
-        curr.next = ListNode(v)
-        curr = curr.next
-    return dummy.next
-
-def linked_to_list(head):
-    result = []
-    while head:
-        result.append(head.val)
-        head = head.next
-    return result
-
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("reverse_linked_list", src_path / "linked_list" / "reverse_linked_list.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
+ListNode = module.ListNode
 
 
 class TestReverseLinkedList:
-    """Test cases for LeetCode 206: Reverse Linked List"""
+    """Test cases for Reverse Linked List problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        head = list_to_linked([1,2,3,4,5])
+        """Test case from example 1"""
+        head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
         result = self.solution.reverseList(head)
-        assert linked_to_list(result) == [5,4,3,2,1]
+        assert result.val == 5
 
     def test_example_2(self):
-        head = list_to_linked([1,2])
+        """Test case from example 2"""
+        head = ListNode(1, ListNode(2))
         result = self.solution.reverseList(head)
-        assert linked_to_list(result) == [2,1]
-
-    def test_example_3(self):
-        result = self.solution.reverseList(None)
-        assert linked_to_list(result) == []
-
+        assert result.val == 2

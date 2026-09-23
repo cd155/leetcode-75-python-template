@@ -10,21 +10,23 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from trie.implement_trie_prefix_tree import Solution
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("implement_trie_prefix_tree", src_path / "trie" / "implement_trie_prefix_tree.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Trie = module.Trie
 
 
-class TestImplementTriePrefixTree:
-    """Test cases for LeetCode 208: Implement Trie (Prefix Tree)"""
-
-    def setup_method(self):
-        self.solution = Solution()
+class TestImplementTrie:
+    """Test cases for Implement Trie problem"""
 
     def test_example_1(self):
-        trie = Solution()
+        """Test case from example 1"""
+        trie = Trie()
         trie.insert("apple")
         assert trie.search("apple") == True
         assert trie.search("app") == False
         assert trie.startsWith("app") == True
         trie.insert("app")
         assert trie.search("app") == True
-

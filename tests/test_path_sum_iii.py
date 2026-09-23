@@ -10,49 +10,28 @@ from pathlib import Path
 src_path = Path(__file__).parent.parent / "src"
 sys.path.insert(0, str(src_path))
 
-from binary_tree.path_sum_iii import Solution
-from binary_tree.path_sum_iii import TreeNode
-
-from collections import deque
-
-def list_to_tree(values):
-    if not values:
-        return None
-    root = TreeNode(values[0])
-    queue = deque([root])
-    i = 1
-    while queue and i < len(values):
-        node = queue.popleft()
-        if i < len(values) and values[i] is not None:
-            node.left = TreeNode(values[i])
-            queue.append(node.left)
-        i += 1
-        if i < len(values) and values[i] is not None:
-            node.right = TreeNode(values[i])
-            queue.append(node.right)
-        i += 1
-    return root
-
-def find_node(root, val):
-    if not root:
-        return None
-    if root.val == val:
-        return root
-    return find_node(root.left, val) or find_node(root.right, val)
-
+# Import using importlib to avoid conflicts with built-in modules
+import importlib.util
+spec = importlib.util.spec_from_file_location("path_sum_iii", src_path / "binary_tree_dfs" / "path_sum_iii.py")
+module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(module)
+Solution = module.Solution
+TreeNode = module.TreeNode
 
 
 class TestPathSumIii:
-    """Test cases for LeetCode 437: Path Sum III"""
+    """Test cases for Path Sum III problem"""
 
     def setup_method(self):
+        """Setup test fixtures"""
         self.solution = Solution()
 
     def test_example_1(self):
-        root = list_to_tree([10,5,-3,3,2,None,11,3,-2,None,1])
+        """Test case from example 1"""
+        root = TreeNode(10, TreeNode(5, TreeNode(3, TreeNode(3), TreeNode(-2)), TreeNode(2, None, TreeNode(1))), TreeNode(-3, None, TreeNode(11)))
         assert self.solution.pathSum(root, 8) == 3
 
     def test_example_2(self):
-        root = list_to_tree([5,4,8,11,None,13,4,7,2,None,None,5,1])
+        """Test case from example 2"""
+        root = TreeNode(5, TreeNode(4, TreeNode(11, TreeNode(7), TreeNode(2))), TreeNode(8, TreeNode(13), TreeNode(4, TreeNode(5), TreeNode(1))))
         assert self.solution.pathSum(root, 22) == 3
-
